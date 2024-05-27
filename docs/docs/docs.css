@@ -1,0 +1,27 @@
+aside {
+    background-color: #dddddd;
+    border: 0.25rem solid #cccccccc;
+    border-radius: 0 1rem 1rem 0;
+    padding: 1rem;
+}
+
+aside > ul {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    margin: 0;
+    padding-left: 1rem;
+}
+
+main {
+    display: grid;
+    grid-template-columns: auto 1fr;
+}
+
+.container {
+    padding: 1rem;
+}
+
+.container > *:first-child {
+    margin-top: 0;
+}

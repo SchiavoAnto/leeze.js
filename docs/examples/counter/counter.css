@@ -1,0 +1,59 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    height: 100vh;
+    margin: 0;
+    background-color: #1e1e1e;
+    color: whitesmoke;
+    font-family: sans-serif;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+button {
+    appearance: none;
+    border: none;
+    background-color: #5f99cf;
+    padding: 0.4rem;
+    font-family: inherit;
+    font-size: medium;
+    border-radius: 0.5rem;
+    transition: background-color 100ms;
+}
+
+button:hover {
+    background-color: #457eb3;
+}
+
+.counter-container {
+    background-color: #121212;
+    padding: 1rem;
+    aspect-ratio: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 2rem;
+    border-radius: 1rem;
+    box-shadow: 0 0 0.5rem white;
+}
+
+.counter-controls {
+    display: flex;
+    gap: 1rem;
+}
+
+.counter-controls > button {
+    width: 2rem;
+    aspect-ratio: 1;
+}
+
+.counter-controls > h2 {
+    width: 3ch;
+    text-align: center;
+    margin: 0;
+}

@@ -1,0 +1,42 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    height: 100vh;
+    margin: 0;
+    background-color: #1e1e1e;
+    color: whitesmoke;
+    font-family: sans-serif;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+button {
+    appearance: none;
+    border: none;
+    background-color: #5f99cf;
+    padding: 0.4rem;
+    font-family: inherit;
+    font-size: medium;
+    border-radius: 0.5rem;
+    transition: background-color 100ms;
+}
+
+button:hover {
+    background-color: #457eb3;
+}
+
+.tabs-header {
+    background-color: #303030;
+    padding: 0.5rem;
+    border-radius: 1rem 1rem 0 0;
+}
+
+.tabs-content {
+    background-color: #3d3d3d;
+    padding: 1rem;
+    border-radius: 0 0 1rem 1rem;
+}

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Leeze.js - Simple Reactivity Library</title>
+    <link rel="stylesheet" href="common.css">
+    <link rel="stylesheet" href="index.css">
+    <link rel="shortcut icon" href="../assets/icons/leezejs_logo_small_1.ico" type="image/x-icon">
+    <script src="vendor/leeze.js"></script>
+</head>
+<body>
+    <nav>
+        <a href="#" class="logo-link">
+            <img src="../assets/logos/leezejs_logo_medium.png" alt="Leeze.js logo" class="logo-image">
+        </a>
+        <div class="navigation-links-group">
+            <a href="docs/">Documentation</a>
+            <a href="https://github.com/schiavoanto/leeze.js" target="_blank" external-link>GitHub</a>
+        </div>
+    </nav>
+    <main>
+        <section>
+            <h1 class="main-title">Leeze.js</h1>
+            <h3 class="main-subtitle">Simple Reactivity Library for the Simple Web</h3>
+        </section>
+        <section>
+            <p>Leeze.js allows developers to create reactive websites without the need of transpiling, building or bundling steps.</p>
+        </section>
+        <section class="styled-section">
+            <h3 class="live-example-section-title">Live example</h3>
+            <hr>
+            <p lz-reactive lz-source="live-example-input"></p>
+            <input type="text" id="live-example-input" value="Type here to change the paragraph!">
+        </section>
+        <section>
+            <h3>Who is this library for?</h3>
+            <p>This library is for those developers that don't want to setup huge systems to have some text change based on user interaction. And for those who don't want to keep handling multiple elements references manually to change a paragraph.</p>
+            <p>If simplicity is your philosophy, Leeze.js is for <b><em>you.</em></b></p>
+        </section>
+    </main>
+    <footer>
+        <section>
+            <div class="dashed-hr"></div>
+            <p>Website built with <img src="resources/icons/heart.svg" alt="love" width="16px"> by <a href="https://github.com/schiavoanto">schiavoanto</a></p>
+        </section>
+    </footer>
+</body>
+</html>

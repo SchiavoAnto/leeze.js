@@ -1,0 +1,33 @@
+main {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2rem;
+    text-align: center;
+}
+
+.main-title {
+    font-size: 2.5rem;
+    margin: 0;
+}
+
+.main-subtitle {
+    font-size: 1.5rem;
+    margin: 0;
+}
+
+#live-example-input {
+    width: 30ch;
+    text-align: center;
+}
+
+.styled-section {
+    background-color: #dddddd;
+    border: 0.25rem solid #cccccccc;
+    border-radius: 1rem;
+    padding: 1rem;
+}
+
+.live-example-section-title {
+    margin-top: 0;
+}
