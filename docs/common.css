@@ -43,6 +43,18 @@ footer {
     font-size: small;
 }
 
+footer p {
+    margin: 0;
+}
+
+footer p:nth-of-type(1) {
+    margin-top: 0.4rem;
+}
+
+footer p:last-of-type {
+    margin-bottom: 0.4rem;
+}
+
 a {
     position: relative;
     text-decoration: none;
