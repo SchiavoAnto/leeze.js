@@ -7,6 +7,11 @@
     <link rel="stylesheet" href="../common.css">
     <link rel="stylesheet" href="docs.css">
     <link rel="shortcut icon" href="../../assets/icons/leezejs_logo_small_1.ico" type="image/x-icon">
+    <script>
+        window.onload = async () => {
+            document.getElementById("footer").innerHTML = await (await fetch('../embeds/footer.html')).text();
+        };
+    </script>
 </head>
 <body>
     <nav>
@@ -68,12 +73,6 @@
             This makes the HTML elements dynamically added to the page (e.g. as an API response) immediately reactive.</p>
         </div>
     </main>
-    <footer>
-        <section>
-            <div class="dashed-hr"></div>
-            <p>Website built with <img src="../resources/icons/heart.svg" alt="love" width="16px"> by <a href="https://github.com/schiavoanto">schiavoanto</a></p>
-            <p>All icons taken from <a href="https://lucide.dev" external-link>Lucide</a></p>
-        </section>
-    </footer>
+    <footer id="footer"></footer>
 </body>
 </html>

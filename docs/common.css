@@ -134,3 +134,13 @@ input[type="text"] {
     width: 100%;
     border-top: 1px dashed currentColor;
 }
+
+.footer-love {
+    display: inline-block;
+    width: 0.75rem;
+    aspect-ratio: 1;
+    background-image: url("resources/icons/heart.svg");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: contain;
+}
