@@ -1,6 +1,7 @@
 aside {
     background-color: #dddddd;
     border: 0.25rem solid #cccccccc;
+    border-left: none;
     border-radius: 0 1rem 1rem 0;
     padding: 1rem;
 }
@@ -11,6 +12,10 @@ aside > ul {
     gap: 0.5rem;
     margin: 0;
     padding-left: 1rem;
+}
+
+aside > ul > p {
+    margin-bottom: 0;
 }
 
 main {
@@ -24,4 +29,32 @@ main {
 
 .container > *:first-child {
     margin-top: 0;
+}
+
+.tip-section {
+    background-color: #cccccccc;
+    padding: 0.25rem;
+    padding-left: 2rem;
+    border: 0.25rem solid seagreen;
+    border-radius: 1rem;
+    position: relative;
+}
+
+.tip-section::before {
+    content: "";
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    left: 0.7rem;
+    width: 1rem;
+    aspect-ratio: 1;
+    background-image: url("../resources/icons/info-badge.svg");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: contain;
+    display: inline-block;
+}
+
+.tip-section + .tip-section {
+    margin-top: 0.5rem;
 }

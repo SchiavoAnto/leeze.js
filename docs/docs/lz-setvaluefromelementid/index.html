@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Leeze.js Documentation - LZ.setValueFromElementId()</title>
+    <link rel="stylesheet" href="../../common.css">
+    <link rel="stylesheet" href="../docs.css">
+    <link rel="shortcut icon" href="../../../assets/icons/leezejs_logo_small_1.ico" type="image/x-icon">
+</head>
+<body>
+    <nav>
+        <div class="logo-container">
+            <a href="../../" class="logo-link">
+                <img src="../../../assets/logos/leezejs_logo_medium.png" alt="Leeze.js logo" class="logo-image">
+            </a>
+            <p>Documentation</p>
+        </div>
+        <div class="navigation-links-group">
+            <a href="../docs/" active-link>Documentation</a>
+            <a href="https://github.com/schiavoanto/leeze.js" target="_blank" external-link>GitHub</a>
+        </div>
+    </nav>
+    <main>
+        <aside>
+            <ul>
+                <li><a href="../">Introduction</a></li>
+                <li><a href=".././quick-start">Quick start</a></li>
+                <li><a href=".././examples">Examples</a></li>
+                <p>HTML</p>
+                <li><a href=".././lz-reactive">lz-reactive</a></li>
+                <li><a href=".././lz-value">lz-value</a></li>
+                <li><a href=".././lz-source">lz-source</a></li>
+                <li><a href=".././lz-mode">lz-mode</a></li>
+                <li><a href=".././lz-onchange">lz-onchange</a></li>
+                <p>JavaScript</p>
+                <li><a href=".././lz">The LZ object</a></li>
+                <li><a href=".././lz-setvalue">LZ.setValue()</a></li>
+                <li><a href=".././lz-setvaluefromelement">LZ.setValueFromElement()</a></li>
+                <li><a href=".././lz-setvaluefromelementid" active-link>LZ.setValueFromElementId()</a></li>
+                <li><a href=".././lz-getvalue">LZ.getValue()</a></li>
+                <li><a href=".././lz-updatevalue">LZ.updateValue()</a></li>
+            </ul>
+        </aside>
+        <div class="container">
+            <h2>LZ.setValueFromElementId()</h2>
+            <p>The <code>LZ.setValueFromElementId()</code> function sets (or updates) the value of the specified variable to the specified element's value.<br>
+            The function has the following signature:</p>
+            <code>setValueFromElementId(name, elementId, mode = "text", forceChange = false)</code>
+            <p>Where:</p>
+            <ul>
+                <li><code>name {string}</code> is the name of the variable to be set/updated.</li>
+                <li><code>elementId {string}</code> is the HTML id to be used to get the element to be used as source.</li>
+                <li><code>mode {("text"|"content")} (Default: "text")</code> specifies how to change the content of the element.</li>
+                <li><code>forceChange {boolean} (Default: false)</code> represents whether or not <code>lz-onchange</code> should be forcefully called.</li>
+            </ul>
+            <p>If the element with the specified id does not exist, the action is aborted.</p>
+            <p>A simple example:</p>
+            <pre>
+&lt;p lz-reactive lz-value="myVariable"&gt;&lt;/p&gt;
+&lt;p id="content-paragraph"&gt;This is my content.&lt;/p&gt;
+&lt;script&gt;
+    LZ.setValueFromElementId("myVariable", "content-paragraph");
+&lt;/script&gt;
+            </pre>
+            <p>If we specified <code>"content"</code> as the mode, <code>content-paragraph</code> could have had other HTML elements inside.</p>
+            <p>All the standard behaviour of <code>LZ.setValue()</code> applies to <code>LZ.setValueFromElementId()</code> too.</p>
+            <section class="tip-section">
+                <p>This is a faster version of <code>LZ.setValueFromElement()</code>. Prefer this whenever possible.</p>
+            </section>
+            <section class="tip-section">
+                <p>For an example on how to use this function, check out the <a href="../examples/tabs/">tabs example</a>.</p>
+            </section>
+        </div>
+    </main>
+    <footer>
+        <section>
+            <div class="dashed-hr"></div>
+            <p>Website built with <img src="../../resources/icons/heart.svg" alt="love" width="16px"> by <a href="https://github.com/schiavoanto">schiavoanto</a></p>
+        </section>
+    </footer>
+</body>
+</html>

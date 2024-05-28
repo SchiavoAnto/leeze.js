@@ -10,9 +10,12 @@
 </head>
 <body>
     <nav>
-        <a href="../" class="logo-link">
-            <img src="../../assets/logos/leezejs_logo_medium.png" alt="Leeze.js logo" class="logo-image">
-        </a>
+        <div class="logo-container">
+            <a href="../" class="logo-link">
+                <img src="../../assets/logos/leezejs_logo_medium.png" alt="Leeze.js logo" class="logo-image">
+            </a>
+            <p>Documentation</p>
+        </div>
         <div class="navigation-links-group">
             <a href="docs/" active-link>Documentation</a>
             <a href="https://github.com/schiavoanto/leeze.js" target="_blank" external-link>GitHub</a>
@@ -21,16 +24,48 @@
     <main>
         <aside>
             <ul>
-                <li>
-                    <a href="#" active-link>Main docs</a>
-                </li>
-                <li>
-                    <a href="/basics">Basics</a>
-                </li>
+                <li><a href="." active-link>Introduction</a></li>
+                <li><a href="./quick-start">Quick start</a></li>
+                <li><a href="./examples">Examples</a></li>
+                <p>HTML</p>
+                <li><a href="./lz-reactive">lz-reactive</a></li>
+                <li><a href="./lz-value">lz-value</a></li>
+                <li><a href="./lz-source">lz-source</a></li>
+                <li><a href="./lz-mode">lz-mode</a></li>
+                <li><a href="./lz-onchange">lz-onchange</a></li>
+                <p>JavaScript</p>
+                <li><a href="./lz">The LZ object</a></li>
+                <li><a href="./lz-setvalue">LZ.setValue()</a></li>
+                <li><a href="./lz-setvaluefromelement">LZ.setValueFromElement()</a></li>
+                <li><a href="./lz-setvaluefromelementid">LZ.setValueFromElementId()</a></li>
+                <li><a href="./lz-getvalue">LZ.getValue()</a></li>
+                <li><a href="./lz-updatevalue">LZ.updateValue()</a></li>
             </ul>
         </aside>
         <div class="container">
-            <h2>Main docs page</h2>
+            <h2>Introduction</h2>
+            <h3>Basic concepts</h3>
+            <p>Leeze.js is based on simple, custom HTML attributes.<br>Supported attributes are:</p>
+            <ul>
+                <li><code>lz-reactive</code></li>
+                <li><code>lz-value</code></li>
+                <li><code>lz-source</code></li>
+                <li><code>lz-mode</code></li>
+                <li><code>lz-onchange</code></li>
+            </ul>
+            <p><code>lz-reactive</code> is fundamental to Leeze.js. It indicates that an element supports reactivity and its value will be updated either by changing a variable or automatically, by specifying a source element.</p>
+            <p>
+                If you use <code>lz-value</code>, specifying a Leeze.js variable, the element's content will be updated automatically when changing that variable.<br>
+                <code>lz-source</code> is a little more nuanced: you have to specify an element id to make it work, but the element must be an <code>input</code> element.
+                Specifically, the element must support the <code>oninput</code> event and it must hold its value in the <code>value</code> property. An <code>&lt;input type="text"&gt;</code> is perfect for this.
+            </p>
+            <p><code>lz-mode</code> tells Leeze.js how to replace the content. A value of <code>"text"</code> (which is the default) indicates that only the text contents will be replaced (essentially changing the element's <code>textContent</code> property);
+                a value of <code>"content"</code> will make Leeze.js replace the HTML inside the content. This DOES NOT sanitize or check the HTML, it just changes the element's <code>innerHTML</code> property.</p>
+            <p><code>lz-onchange</code> is an attribute used to tell Leeze.js what function to call when the element's content has changed, acting essentially as a callback.
+            The name of the function can be a fully qualified name (e.g. <code>my.namespaced.function</code>). The new value will be passed to this function when called.</p>
+            <h3>Dynamic page content</h3>
+            <p>Leeze.js supports dynamic page content. This means that you can add or remove a reactive element whenever and Leeze.js will act accordingly.<br>
+            This makes the HTML elements dynamically added to the page (e.g. as an API response) immediately reactive.</p>
         </div>
     </main>
     <footer>

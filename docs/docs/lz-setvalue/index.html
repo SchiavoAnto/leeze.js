@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Leeze.js Documentation - LZ.setValue()</title>
+    <link rel="stylesheet" href="../../common.css">
+    <link rel="stylesheet" href="../docs.css">
+    <link rel="shortcut icon" href="../../../assets/icons/leezejs_logo_small_1.ico" type="image/x-icon">
+</head>
+<body>
+    <nav>
+        <div class="logo-container">
+            <a href="../../" class="logo-link">
+                <img src="../../../assets/logos/leezejs_logo_medium.png" alt="Leeze.js logo" class="logo-image">
+            </a>
+            <p>Documentation</p>
+        </div>
+        <div class="navigation-links-group">
+            <a href="../docs/" active-link>Documentation</a>
+            <a href="https://github.com/schiavoanto/leeze.js" target="_blank" external-link>GitHub</a>
+        </div>
+    </nav>
+    <main>
+        <aside>
+            <ul>
+                <li><a href="../">Introduction</a></li>
+                <li><a href=".././quick-start">Quick start</a></li>
+                <li><a href=".././examples">Examples</a></li>
+                <p>HTML</p>
+                <li><a href=".././lz-reactive">lz-reactive</a></li>
+                <li><a href=".././lz-value">lz-value</a></li>
+                <li><a href=".././lz-source">lz-source</a></li>
+                <li><a href=".././lz-mode">lz-mode</a></li>
+                <li><a href=".././lz-onchange">lz-onchange</a></li>
+                <p>JavaScript</p>
+                <li><a href=".././lz">The LZ object</a></li>
+                <li><a href=".././lz-setvalue" active-link>LZ.setValue()</a></li>
+                <li><a href=".././lz-setvaluefromelement">LZ.setValueFromElement()</a></li>
+                <li><a href=".././lz-setvaluefromelementid">LZ.setValueFromElementId()</a></li>
+                <li><a href=".././lz-getvalue">LZ.getValue()</a></li>
+                <li><a href=".././lz-updatevalue">LZ.updateValue()</a></li>
+            </ul>
+        </aside>
+        <div class="container">
+            <h2>LZ.setValue()</h2>
+            <p>The <code>LZ.setValue()</code> function is the main function in Leeze.js used to set or change a variable.<br>
+            The function has the following signature:</p>
+            <code>setValue(name, val, forceChange = false)</code>
+            <p>Where:</p>
+            <ul>
+                <li><code>name {string}</code> is the name of the variable to be set/updated.</li>
+                <li><code>val {any}</code> is the desired value.</li>
+                <li><code>forceChange {boolean} (Default: false)</code> represents whether or not <code>lz-onchange</code> should be forcefully called.</li>
+            </ul>
+            <p>A simple example:</p>
+            <pre>
+&lt;p lz-reactive lz-value="myVariable"&gt;&lt;/p&gt;
+&lt;script&gt;
+    LZ.setValue("myVariable", "Hello, World!");
+&lt;/script&gt;
+            </pre>
+            <p>This code correctly updates the paragraph content. Note that if the paragraph had the <code>lz-onchange</code> attribute, the callback function wouldn't have been called because it is the first time we're changing the "myVariable" variable.<br>
+            You can force the callback execution by passing <code>true</code> to the <code>forceChange</code> parameter.</p>
+        </div>
+    </main>
+    <footer>
+        <section>
+            <div class="dashed-hr"></div>
+            <p>Website built with <img src="../../resources/icons/heart.svg" alt="love" width="16px"> by <a href="https://github.com/schiavoanto">schiavoanto</a></p>
+        </section>
+    </footer>
+</body>
+</html>

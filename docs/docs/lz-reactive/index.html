@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Leeze.js Documentation - lz-reactive</title>
+    <link rel="stylesheet" href="../../common.css">
+    <link rel="stylesheet" href="../docs.css">
+    <link rel="shortcut icon" href="../../../assets/icons/leezejs_logo_small_1.ico" type="image/x-icon">
+</head>
+<body>
+    <nav>
+        <div class="logo-container">
+            <a href="../../" class="logo-link">
+                <img src="../../../assets/logos/leezejs_logo_medium.png" alt="Leeze.js logo" class="logo-image">
+            </a>
+            <p>Documentation</p>
+        </div>
+        <div class="navigation-links-group">
+            <a href="../docs/" active-link>Documentation</a>
+            <a href="https://github.com/schiavoanto/leeze.js" target="_blank" external-link>GitHub</a>
+        </div>
+    </nav>
+    <main>
+        <aside>
+            <ul>
+                <li><a href="../">Introduction</a></li>
+                <li><a href=".././quick-start">Quick start</a></li>
+                <li><a href=".././examples">Examples</a></li>
+                <p>HTML</p>
+                <li><a href=".././lz-reactive" active-link>lz-reactive</a></li>
+                <li><a href=".././lz-value">lz-value</a></li>
+                <li><a href=".././lz-source">lz-source</a></li>
+                <li><a href=".././lz-mode">lz-mode</a></li>
+                <li><a href=".././lz-onchange">lz-onchange</a></li>
+                <p>JavaScript</p>
+                <li><a href=".././lz">The LZ object</a></li>
+                <li><a href=".././lz-setvalue">LZ.setValue()</a></li>
+                <li><a href=".././lz-setvaluefromelement">LZ.setValueFromElement()</a></li>
+                <li><a href=".././lz-setvaluefromelementid">LZ.setValueFromElementId()</a></li>
+                <li><a href=".././lz-getvalue">LZ.getValue()</a></li>
+                <li><a href=".././lz-updatevalue">LZ.updateValue()</a></li>
+            </ul>
+        </aside>
+        <div class="container">
+            <h2>lz-reactive</h2>
+            <p>The attribute <code>lz-reactive</code> is the fundamental attribute for reactivity in Leeze.js.
+            It tells the library to treat that element as a reactive element, enabling support for all other attributes and functions.</p>
+            <code>&lt;p lz-reactive&gt;&lt;/p&gt;</code>
+            <p>This basic HTML tells Leeze.js to treat the element as reactive but make no mistake: only using <code>lz-reactive</code> is not enough.
+            You can choose to use either <code>lz-value</code> or <code>lz-source</code> to specify a variable or element to use as the source of reactivity.</p>
+            <section class="tip-section">
+                <p>Leeze.js can make reactive only elements that use <code>textContent</code> and/or <code>innerHTML</code> to hold their contents. Check <a href="../lz-mode">lz-mode</a> for more info.</p>
+            </section>
+        </div>
+    </main>
+    <footer>
+        <section>
+            <div class="dashed-hr"></div>
+            <p>Website built with <img src="../../resources/icons/heart.svg" alt="love" width="16px"> by <a href="https://github.com/schiavoanto">schiavoanto</a></p>
+        </section>
+    </footer>
+</body>
+</html>

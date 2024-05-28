@@ -16,7 +16,7 @@ const LZ = {
     
         observer.observe(htmlElement, observerConfig);
 
-        if (LZLoadCallback !== undefined) {
+        if ((typeof LZLoadCallback) === "function") {
             LZLoadCallback();
         }
     },

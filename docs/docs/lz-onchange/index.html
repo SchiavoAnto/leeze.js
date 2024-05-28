@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Leeze.js Documentation - lz-onchange</title>
+    <link rel="stylesheet" href="../../common.css">
+    <link rel="stylesheet" href="../docs.css">
+    <link rel="shortcut icon" href="../../../assets/icons/leezejs_logo_small_1.ico" type="image/x-icon">
+</head>
+<body>
+    <nav>
+        <div class="logo-container">
+            <a href="../../" class="logo-link">
+                <img src="../../../assets/logos/leezejs_logo_medium.png" alt="Leeze.js logo" class="logo-image">
+            </a>
+            <p>Documentation</p>
+        </div>
+        <div class="navigation-links-group">
+            <a href="../docs/" active-link>Documentation</a>
+            <a href="https://github.com/schiavoanto/leeze.js" target="_blank" external-link>GitHub</a>
+        </div>
+    </nav>
+    <main>
+        <aside>
+            <ul>
+                <li><a href="../">Introduction</a></li>
+                <li><a href=".././quick-start">Quick start</a></li>
+                <li><a href=".././examples">Examples</a></li>
+                <p>HTML</p>
+                <li><a href=".././lz-reactive">lz-reactive</a></li>
+                <li><a href=".././lz-value">lz-value</a></li>
+                <li><a href=".././lz-source">lz-source</a></li>
+                <li><a href=".././lz-mode">lz-mode</a></li>
+                <li><a href=".././lz-onchange" active-link>lz-onchange</a></li>
+                <p>JavaScript</p>
+                <li><a href=".././lz">The LZ object</a></li>
+                <li><a href=".././lz-setvalue">LZ.setValue()</a></li>
+                <li><a href=".././lz-setvaluefromelement">LZ.setValueFromElement()</a></li>
+                <li><a href=".././lz-setvaluefromelementid">LZ.setValueFromElementId()</a></li>
+                <li><a href=".././lz-getvalue">LZ.getValue()</a></li>
+                <li><a href=".././lz-updatevalue">LZ.updateValue()</a></li>
+            </ul>
+        </aside>
+        <div class="container">
+            <h2>lz-onchange</h2>
+            <p>The attribute <code>lz-onchange</code> is used to specify a function name (which can be fully qualified) to call when the value of the reactive element changes, acting as a callback function.</p>
+            <p>The function <em>can</em> expect a parameter variable: Leeze.js will pass the new value to the callback function.</p>
+            <p>Note that this function gets called <em>only</em> when the variable <b>changes</b> and not when it gets <b>set</b>, meaning that the first call to <code>LZ.setValue()</code> or any of its variations does <em>not</em> trigger it,
+            unless you pass <code>true</code> to the <code>forceChange</code> parameter of the setter functions. You can check <a href="../lz-setvalue/">LZ.setValue()</a> for more info.</p>
+            <section class="tip-section">
+                <p>Leeze.js does not enforce a specific function signature, neither does it check that the function expects a parameter. It just calls it passing it the new value.</p>
+            </section>
+            <p>An example:</p>
+            <pre>
+&lt;p lz-reactive lz-value="myVariable" lz-onchange="myCallbackFunction"&gt;&lt;/p&gt;
+&lt;script&gt;
+    function myCallbackFunction() {
+        console.log("The paragraph content has changed!");
+    }
+&lt;/script&gt;
+            </pre>
+            <p>One can also use this other function signature:</p>
+            <pre>
+function myCallbackFunction(newValue) {
+    console.log("The paragraph content has changed to ", newValue);
+}
+            </pre>
+        </div>
+    </main>
+    <footer>
+        <section>
+            <div class="dashed-hr"></div>
+            <p>Website built with <img src="../../resources/icons/heart.svg" alt="love" width="16px"> by <a href="https://github.com/schiavoanto">schiavoanto</a></p>
+        </section>
+    </footer>
+</body>
+</html>

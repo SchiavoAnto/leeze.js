@@ -1,5 +1,7 @@
 // This is used to set a default initial value.
-LZ.setValue("counterValue", 69);
+function LZLoadCallback() {
+    LZ.setValue("counterValue", 69);
+}
 
 function incrementCounter() {
     LZ.updateValue("counterValue", 1);

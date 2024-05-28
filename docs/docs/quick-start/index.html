@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Leeze.js Documentation - Quick start</title>
+    <link rel="stylesheet" href="../../common.css">
+    <link rel="stylesheet" href="../docs.css">
+    <link rel="shortcut icon" href="../../../assets/icons/leezejs_logo_small_1.ico" type="image/x-icon">
+</head>
+<body>
+    <nav>
+        <div class="logo-container">
+            <a href="../../" class="logo-link">
+                <img src="../../../assets/logos/leezejs_logo_medium.png" alt="Leeze.js logo" class="logo-image">
+            </a>
+            <p>Documentation</p>
+        </div>
+        <div class="navigation-links-group">
+            <a href="../docs/" active-link>Documentation</a>
+            <a href="https://github.com/schiavoanto/leeze.js" target="_blank" external-link>GitHub</a>
+        </div>
+    </nav>
+    <main>
+        <aside>
+            <ul>
+                <li><a href="../">Introduction</a></li>
+                <li><a href=".././quick-start" active-link>Quick start</a></li>
+                <li><a href=".././examples">Examples</a></li>
+                <p>HTML</p>
+                <li><a href=".././lz-reactive">lz-reactive</a></li>
+                <li><a href=".././lz-value">lz-value</a></li>
+                <li><a href=".././lz-source">lz-source</a></li>
+                <li><a href=".././lz-mode">lz-mode</a></li>
+                <li><a href=".././lz-onchange">lz-onchange</a></li>
+                <p>JavaScript</p>
+                <li><a href=".././lz">The LZ object</a></li>
+                <li><a href=".././lz-setvalue">LZ.setValue()</a></li>
+                <li><a href=".././lz-setvaluefromelement">LZ.setValueFromElement()</a></li>
+                <li><a href=".././lz-setvaluefromelementid">LZ.setValueFromElementId()</a></li>
+                <li><a href=".././lz-getvalue">LZ.getValue()</a></li>
+                <li><a href=".././lz-updatevalue">LZ.updateValue()</a></li>
+            </ul>
+        </aside>
+        <div class="container">
+            <h2>Quick start</h2>
+            <h3>Adding Leeze.js to an HTML page</h3>
+            <p>Leeze.js is just one single JS file so including it in your project is as easy as using a <code>script</code> tag.
+            You can either download the version you want from GitHub and save it locally or use permalinks to the file itself.</p>
+            <h4>Using the local version of the script</h4>
+            <p>To use Leeze.js locally, just go to the Releases section on the GitHub page and choose what version of Leeze.js you want to use. It is recommended to always use the latest stable version available.<br>
+            Once you downloaded and saved the script in a directory of your choice, just add it to a page using the HTML <code>script</code> tag:</p>
+            <code>&lt;script src="path/to/script/leeze.js"&gt;&lt;script&gt;</code>
+            <h4>Using a GitHub permalink</h4>
+            <p>This method is not the preferred one. You can include Leeze.js in your page using a GitHub permalink to the file. You can use the main branch version (not recommeded as it could be buggy) or a specific commit's version.</p>
+            <code>&lt;script src="https://github.com/SchiavoAnto/leeze.js/blob/914c517a5bde2e5b75d1aa9439129a2bd9aa8b93/leeze.js"&gt;&lt;script&gt;</code>
+
+            <h3>First steps</h3>
+            <p>Once you have added Leeze.js to your project, you can use all of its features as you want. Here is a basic example, which is essentially the one on the <a href="/docs">main page</a>:</p>
+            <pre>
+&lt;!DOCTYPE html&gt;
+&lt;html lang="en"&gt;
+    &lt;head&gt;
+        &lt;title&gt;Leeze.js Basic Example&lt;/title&gt;
+        &lt;script src="path/to/leeze.js"&gt;&lt;/script&gt;
+    &lt;/head&gt;
+    &lt;body&gt;
+        &lt;p lz-reactive lz-source="my-input"&gt;&lt;/p&gt;
+        &lt;input type="text" id="my-input" placeholder="Content..." value="This is the default value."&gt;
+    &lt;/body&gt;
+&lt;/html&gt;
+            </pre>
+            <p>In this example, using the <code>lz-source</code> attribute allows us to write no JavaScript.
+            Leeze.js will automatically hook up to the input's <code>oninput</code> event and update the paragraph each time we type something.
+            If the reactive element (in this case, the paragraph) gets removed from the DOM, Leeze.js will automatically unhook from the <code>oninput</code> event.<br>
+            If we specify a value for the <code>input</code> element, Leeze.js will automatically use it as the default value for the paragraph.</p>
+            <section class="tip-section">
+                <p>You can check out more examples in the <a href="../examples">examples page</a>.</p>
+            </section>
+        </div>
+    </main>
+    <footer>
+        <section>
+            <div class="dashed-hr"></div>
+            <p>Website built with <img src="../../resources/icons/heart.svg" alt="love" width="16px"> by <a href="https://github.com/schiavoanto">schiavoanto</a></p>
+        </section>
+    </footer>
+</body>
+</html>
