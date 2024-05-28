@@ -79,12 +79,13 @@ a:hover::before, a[active-link]::before {
 
 a[external-link]::after {
     content: "";
-    width: 1rem;
+    height: 0.55rem;
     aspect-ratio: 1;
+    margin-left: 0.1rem;
     background-image: url("resources/icons/link.svg");
     background-position: bottom center;
     background-repeat: no-repeat;
-    background-size: 80%;
+    background-size: contain;
     display: inline-block;
 }
 
