@@ -9,7 +9,7 @@
     <link rel="shortcut icon" href="../assets/icons/leezejs_logo_small_1.ico" type="image/x-icon">
     <script src="vendor/leeze.js"></script>
     <script>
-        window.onload = async () => {
+        LZLoadCallback = async () => {
             document.getElementById("footer").innerHTML = await (await fetch('./embeds/footer.html')).text();
         };
     </script>
