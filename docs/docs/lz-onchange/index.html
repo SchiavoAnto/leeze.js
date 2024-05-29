@@ -34,7 +34,7 @@
                 <li><a href=".././examples">Examples</a></li>
                 <p>HTML</p>
                 <li><a href=".././lz-reactive">lz-reactive</a></li>
-                <li><a href=".././lz-value">lz-value</a></li>
+                <li><a href=".././lz-bucket">lz-bucket</a></li>
                 <li><a href=".././lz-source">lz-source</a></li>
                 <li><a href=".././lz-mode">lz-mode</a></li>
                 <li><a href=".././lz-onchange" active-link>lz-onchange</a></li>
@@ -58,7 +58,7 @@
             </section>
             <p>An example:</p>
             <pre>
-&lt;p lz-reactive lz-value="myVariable" lz-onchange="myCallbackFunction"&gt;&lt;/p&gt;
+&lt;p lz-reactive lz-bucket="myBucket" lz-onchange="myCallbackFunction"&gt;&lt;/p&gt;
 &lt;script&gt;
     function myCallbackFunction() {
         console.log("The paragraph content has changed!");

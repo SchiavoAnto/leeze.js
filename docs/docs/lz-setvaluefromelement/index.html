@@ -34,7 +34,7 @@
                 <li><a href=".././examples">Examples</a></li>
                 <p>HTML</p>
                 <li><a href=".././lz-reactive">lz-reactive</a></li>
-                <li><a href=".././lz-value">lz-value</a></li>
+                <li><a href=".././lz-bucket">lz-bucket</a></li>
                 <li><a href=".././lz-source">lz-source</a></li>
                 <li><a href=".././lz-mode">lz-mode</a></li>
                 <li><a href=".././lz-onchange">lz-onchange</a></li>
@@ -49,12 +49,12 @@
         </aside>
         <div class="container">
             <h2>LZ.setValueFromElement()</h2>
-            <p>The <code>LZ.setValueFromElement()</code> function sets (or updates) the value of the specified variable to the specified element's value.<br>
+            <p>The <code>LZ.setValueFromElement()</code> function sets (or updates) the value of the specified bucket to the specified element's value.<br>
             The function has the following signature:</p>
-            <code>setValueFromElement(name, elementSelector, mode = "text", forceChange = false)</code>
+            <code>setValueFromElement(bucketName, elementSelector, mode = "text", forceChange = false)</code>
             <p>Where:</p>
             <ul>
-                <li><code>name {string}</code> is the name of the variable to be set/updated.</li>
+                <li><code>bucketName {string}</code> is the name of the bucket to be set/updated.</li>
                 <li><code>elementSelector {string}</code> is a valid CSS selector to be used to get the element to be used as source.</li>
                 <li><code>mode {("text"|"content")} (Default: "text")</code> specifies how to change the content of the element.</li>
                 <li><code>forceChange {boolean} (Default: false)</code> represents whether or not <code>lz-onchange</code> should be forcefully called.</li>
@@ -62,10 +62,10 @@
             <p>If the element with the specified selector does not exist, the action is aborted.</p>
             <p>A simple example:</p>
             <pre>
-&lt;p lz-reactive lz-value="myVariable"&gt;&lt;/p&gt;
+&lt;p lz-reactive lz-bucket="myBucket"&gt;&lt;/p&gt;
 &lt;p id="content-paragraph"&gt;This is my content.&lt;/p&gt;
 &lt;script&gt;
-    LZ.setValueFromElement("myVariable", "#content-paragraph");
+    LZ.setValueFromElement("myBucket", "#content-paragraph");
 &lt;/script&gt;
             </pre>
             <p>If we specified <code>"content"</code> as the mode, <code>content-paragraph</code> could have had other HTML elements inside.</p>

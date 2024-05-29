@@ -1,6 +1,6 @@
 const LZ = {
     reactiveElements: [],
-    variables: {},
+    buckets: {},
 
     /**
      * INTERNAL USE ONLY!  
@@ -112,18 +112,18 @@ const LZ = {
     },
 
     /**
-     * Set (or update) the value of the specified variable.  
-     * If the variable already existed or `forceChange` is `true`, the function in the `lz-onchange` attribute is executed.
-     * @param {string} name The name of the variable to be set/updated.
+     * Set (or update) the value of the specified bucket.  
+     * If the bucket already existed or `forceChange` is `true`, the function in the `lz-onchange` attribute is executed.
+     * @param {string} bucketName The name of the bucket to be set/updated.
      * @param {*} val The desired value.
      * @param {boolean} forceChange (Optional) Whether or not `lz-onchange` should be forcefully executed. Defaults to `false`.
      */
-    setValue(name, val, forceChange = false) {
-        let existed = LZ.getValue(name) != null;
-        LZ.variables[name] = val;
+    setValue(bucketName, val, forceChange = false) {
+        let existed = LZ.getValue(bucketName) != null;
+        LZ.buckets[bucketName] = val;
         for (elem of LZ.reactiveElements) {
             const mode = elem.getAttribute("lz-mode");
-            if (elem.getAttribute("lz-value") == name) {
+            if (elem.getAttribute("lz-bucket") == bucketName) {
                 if (mode === "content") {
                     elem.innerHTML = val;
                 } else {
@@ -139,15 +139,15 @@ const LZ = {
     },
 
     /**
-     * Set (or update) the value of the specified variable to the specified element's value.  
+     * Set (or update) the value of the specified bucket to the specified element's value.  
      * If the element does not exist, the action is aborted.  
-     * If the variable already existed or `forceChange` is `true`, the function in the `lz-onchange` attribute is executed.
-     * @param {string} name The name of the variable to be set/updated.
+     * If the bucket already existed or `forceChange` is `true`, the function in the `lz-onchange` attribute is executed.
+     * @param {string} bucketName The name of the bucket to be set/updated.
      * @param {string} elementSelector The selector of the element to get the value from.
      * @param {("text"|"content")} mode (Optional) The mode of operation. `"text"` for text content, `"content"` for HTML. Defaults to `"text"`.
      * @param {boolean} forceChange (Optional) Whether or not `lz-onchange` should be forcefully executed. Defaults to `false`.
      */
-    setValueFromElement(name, elementSelector, mode = "text", forceChange = false) {
+    setValueFromElement(bucketName, elementSelector, mode = "text", forceChange = false) {
         const elem = document.querySelector(elementSelector);
         if (elem === null) return;
         let value = undefined;
@@ -160,20 +160,20 @@ const LZ = {
                 value = elem.textContent;
             }
         }
-        LZ.setValue(name, value, forceChange);
+        LZ.setValue(bucketName, value, forceChange);
     },
 
     /**
-     * Set (or update) the value of the specified variable to the specified element's value.  
+     * Set (or update) the value of the specified bucket to the specified element's value.  
      * If the element does not exist, the action is aborted.  
      * This is a faster version of `setValueFromElement`.  
-     * If the variable already existed or `forceChange` is `true`, the function in the `lz-onchange` attribute is executed.
-     * @param {string} name The name of the variable to be set/updated.
+     * If the bucket already existed or `forceChange` is `true`, the function in the `lz-onchange` attribute is executed.
+     * @param {string} bucketName The name of the bucket to be set/updated.
      * @param {string} elementId The id of the element to get the value from.
      * @param {("text"|"content")} mode (Optional) The mode of operation. `"text"` for text content, `"content"` for HTML. Defaults to `"text"`.
      * @param {boolean} forceChange (Optional) Whether or not `lz-onchange` should be forcefully invoked. Defaults to `false`.
      */
-    setValueFromElementId(name, elementId, mode = "text", forceChange = false) {
+    setValueFromElementId(bucketName, elementId, mode = "text", forceChange = false) {
         const elem = document.getElementById(elementId);
         if (elem === null) return;
         let value = undefined;
@@ -186,29 +186,29 @@ const LZ = {
                 value = elem.textContent;
             }
         }
-        LZ.setValue(name, value, forceChange);
+        LZ.setValue(bucketName, value, forceChange);
     },
 
     /**
-     * Get the value of the specified variable.
-     * @param {string} name The name of the variable.
-     * @returns The value of the variable if valid, else `null`.
+     * Get the value of the specified bucket.
+     * @param {string} bucketName The name of the variable.
+     * @returns The value of the bucket if valid, else `null`.
      */
-    getValue(name) {
-        if (name in LZ.variables) {
-            return LZ.variables[name];
+    getValue(bucketName) {
+        if (bucketName in LZ.buckets) {
+            return LZ.buckets[bucketName];
         }
         return null;
     },
 
     /**
-     * Changes the specified variable by the specified delta.  
+     * Changes the specified bucket value by the specified delta.  
      * Intended to be used with numbers.
-     * @param {string} name The name of the variable to change.
+     * @param {string} bucketName The name of the bucket to change.
      * @param {number} delta The desired change amount.
      */
-    updateValue(name, delta) {
-        LZ.setValue(name, LZ.getValue(name) + delta);
+    updateValue(bucketName, delta) {
+        LZ.setValue(bucketName, LZ.getValue(bucketName) + delta);
     }
 };
 

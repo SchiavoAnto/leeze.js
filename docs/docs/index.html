@@ -34,7 +34,7 @@
                 <li><a href="./examples">Examples</a></li>
                 <p>HTML</p>
                 <li><a href="./lz-reactive">lz-reactive</a></li>
-                <li><a href="./lz-value">lz-value</a></li>
+                <li><a href="./lz-bucket">lz-bucket</a></li>
                 <li><a href="./lz-source">lz-source</a></li>
                 <li><a href="./lz-mode">lz-mode</a></li>
                 <li><a href="./lz-onchange">lz-onchange</a></li>
@@ -50,17 +50,22 @@
         <div class="container">
             <h2>Introduction</h2>
             <h3>Basic concepts</h3>
-            <p>Leeze.js is based on simple, custom HTML attributes.<br>Supported attributes are:</p>
+            <p>Leeze.js is based on simple concepts: buckets and custom HTML attributes.</p>
+            <p>You can think of buckets exactly like a standard JS variable, but they are used to tell Leeze.js what elements to update with whatever data we put inside them.<br>
+            Each bucket has to have a name and can hold any data (called value). Whenever the value changes, every reactive element dependent on that bucket will get its contents updated with the new bucket value.<br>
+            You will read later on that you can use the HTML attribute <code>lz-bucket</code> to specify the name of the bucket that an element will be updated with, and <code>LZ.setValue()</code> to create a new bucket or update a bucket's value.</p>
+
+            <p>The custom HTML attributes that Leeze.js uses are:</p>
             <ul>
                 <li><code>lz-reactive</code></li>
-                <li><code>lz-value</code></li>
+                <li><code>lz-bucket</code></li>
                 <li><code>lz-source</code></li>
                 <li><code>lz-mode</code></li>
                 <li><code>lz-onchange</code></li>
             </ul>
             <p><code>lz-reactive</code> is fundamental to Leeze.js. It indicates that an element supports reactivity and its value will be updated either by changing a variable or automatically, by specifying a source element.</p>
             <p>
-                If you use <code>lz-value</code>, specifying a Leeze.js variable, the element's content will be updated automatically when changing that variable.<br>
+                If you use <code>lz-bucket</code>, specifying a bucket name, the element's content will be updated automatically when the value of that bucket changes.<br>
                 <code>lz-source</code> is a little more nuanced: you have to specify an element id to make it work, but the element must be an <code>input</code> element.
                 Specifically, the element must support the <code>oninput</code> event and it must hold its value in the <code>value</code> property. An <code>&lt;input type="text"&gt;</code> is perfect for this.
             </p>
