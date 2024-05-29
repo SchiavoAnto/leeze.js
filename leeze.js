@@ -59,9 +59,13 @@ const LZ = {
             if (sourceElem !== null) {
                 if (sourceElem.tagName.toLowerCase() === "input") {
                     sourceElem.oninput = function() {
-                        elem.textContent = sourceElem.value;
+                        if ((mode = elem.getAttribute("lz-mode")) === "content") {
+                            elem.innerHTML = sourceElem.value;
+                        } else {
+                            elem.textContent = sourceElem.value;
+                        }
                     };
-                    elem.textContent = sourceElem.value;
+                    sourceElem.oninput();
                 }
             }
         }
