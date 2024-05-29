@@ -1,0 +1,35 @@
+<ul id="sidebar-contents">
+    <li><a href="../" link="/docs">Introduction</a></li>
+    <li><a href=".././quick-start" link="/docs/quick-start">Quick start</a></li>
+    <li><a href=".././examples" link="/docs/examples">Examples</a></li>
+    <p>HTML</p>
+    <li><a href=".././lz-reactive" link="/docs/lz-reactive">lz-reactive</a></li>
+    <li><a href=".././lz-bucket" link="/docs/lz-bucket">lz-bucket</a></li>
+    <li><a href=".././lz-source" link="/docs/lz-source">lz-source</a></li>
+    <li><a href=".././lz-mode" link="/docs/lz-mode">lz-mode</a></li>
+    <li><a href=".././lz-onchange" link="/docs/lz-onchange">lz-onchange</a></li>
+    <p>JavaScript</p>
+    <li><a href=".././lz" link="/docs/lz">The LZ object</a></li>
+    <li><a href=".././lz-setvalue" link="/docs/lz-setvalue">LZ.setValue()</a></li>
+    <li><a href=".././lz-setvaluefromelement" link="/docs/lz-setvaluefromelement">LZ.setValueFromElement()</a></li>
+    <li><a href=".././lz-setvaluefromelementid" link="/docs/lz-setvaluefromelementid">LZ.setValueFromElementId()</a></li>
+    <li><a href=".././lz-getvalue" link="/docs/lz-getvalue">LZ.getValue()</a></li>
+    <li><a href=".././lz-updatevalue" link="/docs/lz-updatevalue">LZ.updateValue()</a></li>
+    <li><a href=".././lz-removevalue" link="/docs/lz-removevalue">LZ.removeValue()</a></li>
+</ul>
+<img src="" hidden
+onerror="(() => {
+    let url = document.location.href;
+    if (url.endsWith('/')) {
+        url = url.substring(0, url.length - 1);
+    }
+
+    const sidebarItems = document.getElementsByTagName('li');
+    for (li of sidebarItems) {
+        if (li.childCount == 0) continue;
+        if (url.endsWith((li.children[0].getAttribute('link') ?? ''))) {
+            li.children[0].setAttribute('active-link', '');
+            break;
+        }
+    }
+})();">

@@ -10,6 +10,7 @@
     <script>
         window.onload = async () => {
             document.getElementById("footer").innerHTML = await (await fetch('../../embeds/footer.html')).text();
+            document.getElementById("sidebar").innerHTML = await (await fetch('../embeds/sidebar.html')).text();
         };
     </script>
 </head>
@@ -27,27 +28,7 @@
         </div>
     </nav>
     <main>
-        <aside>
-            <ul>
-                <li><a href="../">Introduction</a></li>
-                <li><a href=".././quick-start">Quick start</a></li>
-                <li><a href=".././examples">Examples</a></li>
-                <p>HTML</p>
-                <li><a href=".././lz-reactive">lz-reactive</a></li>
-                <li><a href=".././lz-bucket">lz-bucket</a></li>
-                <li><a href=".././lz-source">lz-source</a></li>
-                <li><a href=".././lz-mode">lz-mode</a></li>
-                <li><a href=".././lz-onchange">lz-onchange</a></li>
-                <p>JavaScript</p>
-                <li><a href=".././lz">The LZ object</a></li>
-                <li><a href=".././lz-setvalue">LZ.setValue()</a></li>
-                <li><a href=".././lz-setvaluefromelement">LZ.setValueFromElement()</a></li>
-                <li><a href=".././lz-setvaluefromelementid">LZ.setValueFromElementId()</a></li>
-                <li><a href=".././lz-getvalue">LZ.getValue()</a></li>
-                <li><a href=".././lz-updatevalue">LZ.updateValue()</a></li>
-                <li><a href=".././lz-removevalue" active-link>LZ.removeValue()</a></li>
-            </ul>
-        </aside>
+        <aside id="sidebar"></aside>
         <div class="container">
             <h2>LZ.removeValue()</h2>
             <p>The <code>LZ.removeValue()</code> function removes (essentially deleting) the bucket with the specified name.<br>
