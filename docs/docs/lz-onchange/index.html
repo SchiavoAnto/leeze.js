@@ -51,7 +51,7 @@
         <div class="container">
             <h2>lz-onchange</h2>
             <p>The attribute <code>lz-onchange</code> is used to specify a function name (which can be fully qualified) to call when the value of the reactive element changes, acting as a callback function.</p>
-            <p>The function <em>can</em> expect two parameters: the new updated value and the element which caused the change (if any).</p>
+            <p>The function <em>can</em> expect two parameters: the new updated value and the element which caused the change. If the change was not caused by the element specified in <code>lz-source</code>, the second parameter will be <code>null</code>.</p>
             <p>Note that this function gets called <em>only</em> when the variable <b>changes</b> and not when it gets <b>set</b>, meaning that the first call to <code>LZ.setValue()</code> or any of its variations does <em>not</em> trigger it,
             unless you pass <code>true</code> to the <code>forceChange</code> parameter of the setter functions. You can check <a href="../lz-setvalue/">LZ.setValue()</a> for more info.</p>
             <section class="tip-section">
