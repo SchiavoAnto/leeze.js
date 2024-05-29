@@ -64,6 +64,7 @@ const LZ = {
                         } else {
                             elem.textContent = sourceElem.value;
                         }
+                        LZ._setValue("__LZ_auto_" + sourceElemId, sourceElem.value, false, sourceElem);
                     };
                     sourceElem.oninput();
                 }
@@ -88,6 +89,7 @@ const LZ = {
             if (sourceElem !== null) {
                 if (sourceElem.tagName.toLowerCase() === "input") {
                     sourceElem.oninput = null;
+                    LZ.removeValue("__LZ_auto_" + sourceElemId);
                 }
             }
         }
@@ -112,13 +114,15 @@ const LZ = {
     },
 
     /**
+     * INTERNAL USE ONLY!  
      * Set (or update) the value of the specified bucket.  
      * If the bucket already existed or `forceChange` is `true`, the function in the `lz-onchange` attribute is executed.
      * @param {string} bucketName The name of the bucket to be set/updated.
      * @param {*} val The desired value.
      * @param {boolean} forceChange (Optional) Whether or not `lz-onchange` should be forcefully executed. Defaults to `false`.
+     * @param {Element} sourceOfChange (Optional) The element that caused the change or `null` if the change was caused by something else.
      */
-    setValue(bucketName, val, forceChange = false) {
+    _setValue(bucketName, val, forceChange = false, sourceOfChange = null) {
         let existed = LZ.getValue(bucketName) != null;
         LZ.buckets[bucketName] = val;
         for (elem of LZ.reactiveElements) {
@@ -132,10 +136,21 @@ const LZ = {
             }
             if (existed === true || forceChange === true) {
                 if ((v = elem.getAttribute("lz-onchange")) != null) {
-                    LZ.executeFunctionByName(v, val);
+                    LZ.executeFunctionByName(v, val, sourceOfChange);
                 }
             }
         }
+    },
+
+    /**
+     * Set (or update) the value of the specified bucket.  
+     * If the bucket already existed or `forceChange` is `true`, the function in the `lz-onchange` attribute is executed.
+     * @param {string} bucketName The name of the bucket to be set/updated.
+     * @param {*} val The desired value.
+     * @param {boolean} forceChange (Optional) Whether or not `lz-onchange` should be forcefully executed. Defaults to `false`.
+     */
+    setValue(bucketName, val, forceChange = false) {
+        LZ._setValue(bucketName, val, forceChange);
     },
 
     /**
@@ -160,7 +175,7 @@ const LZ = {
                 value = elem.textContent;
             }
         }
-        LZ.setValue(bucketName, value, forceChange);
+        LZ._setValue(bucketName, value, forceChange);
     },
 
     /**
@@ -186,7 +201,7 @@ const LZ = {
                 value = elem.textContent;
             }
         }
-        LZ.setValue(bucketName, value, forceChange);
+        LZ._setValue(bucketName, value, forceChange);
     },
 
     /**
@@ -208,7 +223,17 @@ const LZ = {
      * @param {number} delta The desired change amount.
      */
     updateValue(bucketName, delta) {
-        LZ.setValue(bucketName, LZ.getValue(bucketName) + delta);
+        LZ._setValue(bucketName, LZ.getValue(bucketName) + delta);
+    },
+
+    /**
+     * Removes the bucket with the specified name.
+     * @param {string} bucketName The name of the bucket to remove.
+     */
+    removeValue(bucketName) {
+        if (bucketName in LZ.buckets) {
+            delete LZ.buckets[bucketName];
+        }
     }
 };
 

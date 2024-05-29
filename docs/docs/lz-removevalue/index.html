@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Leeze.js Documentation - LZ.setValueFromElement()</title>
+    <title>Leeze.js Documentation - LZ.removeValue()</title>
     <link rel="stylesheet" href="../../common.css">
     <link rel="stylesheet" href="../docs.css">
     <link rel="shortcut icon" href="../../../assets/icons/leezejs_logo_small_1.ico" type="image/x-icon">
@@ -41,39 +41,22 @@
                 <p>JavaScript</p>
                 <li><a href=".././lz">The LZ object</a></li>
                 <li><a href=".././lz-setvalue">LZ.setValue()</a></li>
-                <li><a href=".././lz-setvaluefromelement" active-link>LZ.setValueFromElement()</a></li>
+                <li><a href=".././lz-setvaluefromelement">LZ.setValueFromElement()</a></li>
                 <li><a href=".././lz-setvaluefromelementid">LZ.setValueFromElementId()</a></li>
                 <li><a href=".././lz-getvalue">LZ.getValue()</a></li>
                 <li><a href=".././lz-updatevalue">LZ.updateValue()</a></li>
-                <li><a href=".././lz-removevalue">LZ.removeValue()</a></li>
+                <li><a href=".././lz-removevalue" active-link>LZ.removeValue()</a></li>
             </ul>
         </aside>
         <div class="container">
-            <h2>LZ.setValueFromElement()</h2>
-            <p>The <code>LZ.setValueFromElement()</code> function sets (or updates) the value of the specified bucket to the specified element's value.<br>
+            <h2>LZ.removeValue()</h2>
+            <p>The <code>LZ.removeValue()</code> function removes (essentially deleting) the bucket with the specified name.<br>
             The function has the following signature:</p>
-            <code>setValueFromElement(bucketName, elementSelector, mode = "text", forceChange = false)</code>
+            <code>removeValue(bucketName)</code>
             <p>Where:</p>
             <ul>
-                <li><code>bucketName {string}</code> is the name of the bucket to be set/updated.</li>
-                <li><code>elementSelector {string}</code> is a valid CSS selector to be used to get the element to be used as source.</li>
-                <li><code>mode {("text"|"content")} (Default: "text")</code> specifies how to change the content of the element.</li>
-                <li><code>forceChange {boolean} (Default: false)</code> represents whether or not <code>lz-onchange</code> should be forcefully called.</li>
+                <li><code>bucketName {string}</code> is the name of the bucket to be removed.</li>
             </ul>
-            <p>If the element with the specified selector does not exist, the action is aborted.</p>
-            <p>A simple example:</p>
-            <pre>
-&lt;p lz-reactive lz-bucket="myBucket"&gt;&lt;/p&gt;
-&lt;p id="content-paragraph"&gt;This is my content.&lt;/p&gt;
-&lt;script&gt;
-    LZ.setValueFromElement("myBucket", "#content-paragraph");
-&lt;/script&gt;
-            </pre>
-            <p>If we specified <code>"content"</code> as the mode, <code>content-paragraph</code> could have had other HTML elements inside.</p>
-            <p>All the standard behaviour of <code>LZ.setValue()</code> applies to <code>LZ.setValueFromElement()</code> too.</p>
-            <section class="tip-section">
-                <p>This is a slower version of <code>LZ.setValueFromElementId()</code>. Prefer that whenever possible.</p>
-            </section>
         </div>
     </main>
     <footer id="footer"></footer>

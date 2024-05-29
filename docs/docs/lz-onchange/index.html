@@ -45,30 +45,37 @@
                 <li><a href=".././lz-setvaluefromelementid">LZ.setValueFromElementId()</a></li>
                 <li><a href=".././lz-getvalue">LZ.getValue()</a></li>
                 <li><a href=".././lz-updatevalue">LZ.updateValue()</a></li>
+                <li><a href=".././lz-removevalue">LZ.removeValue()</a></li>
             </ul>
         </aside>
         <div class="container">
             <h2>lz-onchange</h2>
             <p>The attribute <code>lz-onchange</code> is used to specify a function name (which can be fully qualified) to call when the value of the reactive element changes, acting as a callback function.</p>
-            <p>The function <em>can</em> expect a parameter variable: Leeze.js will pass the new value to the callback function.</p>
+            <p>The function <em>can</em> expect two parameters: the new updated value and the element which caused the change (if any).</p>
             <p>Note that this function gets called <em>only</em> when the variable <b>changes</b> and not when it gets <b>set</b>, meaning that the first call to <code>LZ.setValue()</code> or any of its variations does <em>not</em> trigger it,
             unless you pass <code>true</code> to the <code>forceChange</code> parameter of the setter functions. You can check <a href="../lz-setvalue/">LZ.setValue()</a> for more info.</p>
             <section class="tip-section">
-                <p>Leeze.js does not enforce a specific function signature, neither does it check that the function expects a parameter. It just calls it passing it the new value.</p>
+                <p>Leeze.js does not enforce a specific function signature, neither does it check that the function expects parameters.</p>
             </section>
             <p>An example:</p>
             <pre>
-&lt;p lz-reactive lz-bucket="myBucket" lz-onchange="myCallbackFunction"&gt;&lt;/p&gt;
+...
+&lt;p lz-reactive lz-source="my-input-element" lz-onchange="myCallbackFunction"&gt;&lt;/p&gt;
 &lt;script&gt;
     function myCallbackFunction() {
         console.log("The paragraph content has changed!");
     }
 &lt;/script&gt;
             </pre>
-            <p>One can also use this other function signature:</p>
+            <p>One can also use these other function signatures:</p>
             <pre>
 function myCallbackFunction(newValue) {
     console.log("The paragraph content has changed to ", newValue);
+}
+            </pre>
+            <pre>
+function myCallbackFunction(newValue, sourceOfChangeElement) {
+    console.log("The paragraph content has changed to ", newValue, " by the element ", sourceOfChangeElement);
 }
             </pre>
         </div>
