@@ -7,6 +7,11 @@
     <link rel="stylesheet" href="../../common.css">
     <link rel="stylesheet" href="../docs.css">
     <link rel="shortcut icon" href="../../../assets/icons/leezejs_logo_small_1.ico" type="image/x-icon">
+    <script>
+        window.onload = async () => {
+            document.getElementById("footer").innerHTML = await (await fetch('../../embeds/footer.html')).text();
+        };
+    </script>
 </head>
 <body>
     <nav>
