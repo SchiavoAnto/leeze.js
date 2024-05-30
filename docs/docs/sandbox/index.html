@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Leeze.js Sandbox</title>
+    <script src="sandbox.js"></script>
+    <link rel="stylesheet" href="sandbox.css">
+    <link rel="shortcut icon" href="../../../assets/icons/leezejs_logo_small_1.ico" type="image/x-icon">
+</head>
+<body>
+    <nav>
+        <div class="logo-container">
+            <a href="../../" class="logo-link">
+                <img src="../../../assets/logos/leezejs_logo_medium.png" alt="Leeze.js logo" class="logo-image">
+            </a>
+            <p>Sandbox</p>
+        </div>
+        <div class="navigation-links-group">
+            <a href="../">Documentation</a>
+            <a href="https://github.com/schiavoanto/leeze.js" target="_blank" external-link>GitHub</a>
+        </div>
+    </nav>
+    <main>
+        <div class="sandbox-container">
+            <div class="sandbox-menubar">
+                <button onclick="refreshPreview()">Preview</button>
+                <label>Auto-preview (500ms) <input type="checkbox" id="auto-preview-cb" checked></label>
+            </div>
+            <div class="sandbox-content">
+                <textarea id="code-area" oninput="codeChanged()">&lt;p&gt;Type your code on the left&lt;/p&gt;
+&lt;p&gt;Get your preview on the right&lt;/p&gt;</textarea>
+                <iframe id="sandbox-preview"></iframe>
+            </div>
+        </div>
+    </main>
+</body>
+</html>

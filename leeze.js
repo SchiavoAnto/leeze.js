@@ -1,6 +1,7 @@
 const LZ = {
     reactiveElements: [],
     buckets: {},
+    supportedAutoTags: ["input", "textarea"],
 
     /**
      * INTERNAL USE ONLY!  
@@ -52,12 +53,15 @@ const LZ = {
      * @param {Element} elem The reactive element to add to the collection.
      */
     addReactiveElement(elem) {
+        if (LZ.reactiveElements.includes(elem)) {
+            LZ.reactiveElements.splice(LZ.reactiveElements.indexOf(elem), 1);
+        }
         LZ.reactiveElements.push(elem);
         const sourceElemId = elem.getAttribute("lz-source");
-        if (sourceElemId !== null) {
+        if (sourceElemId !== null && sourceElemId.length > 0) {
             const sourceElem = document.getElementById(sourceElemId);
             if (sourceElem !== null) {
-                if (sourceElem.tagName.toLowerCase() === "input") {
+                if (LZ.supportedAutoTags.includes(sourceElem.tagName.toLowerCase())) {
                     sourceElem.oninput = function() {
                         if ((mode = elem.getAttribute("lz-mode")) === "content") {
                             elem.innerHTML = sourceElem.value;
@@ -80,14 +84,13 @@ const LZ = {
      */
     removeReactiveElement(elem) {
         let i = LZ.reactiveElements.indexOf(elem);
-        if (i != -1) {
-            LZ.reactiveElements.splice(i, 1);
-        }
+        if (i === -1) return;
+        LZ.reactiveElements.splice(i, 1);
         const sourceElemId = elem.getAttribute("lz-source");
-        if (sourceElemId !== null) {
+        if (sourceElemId !== null && sourceElemId.length > 0) {
             const sourceElem = document.getElementById(sourceElemId);
             if (sourceElem !== null) {
-                if (sourceElem.tagName.toLowerCase() === "input") {
+                if (LZ.supportedAutoTags.includes(sourceElem.tagName.toLowerCase())) {
                     sourceElem.oninput = null;
                     LZ.removeValue("__LZ_auto_" + sourceElemId);
                 }
