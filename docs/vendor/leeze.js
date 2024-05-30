@@ -2,6 +2,7 @@ const LZ = {
     reactiveElements: [],
     buckets: {},
     supportedAutoTags: ["input", "textarea"],
+    lzsourceElements: {},
 
     /**
      * INTERNAL USE ONLY!  
@@ -62,11 +63,18 @@ const LZ = {
             const sourceElem = document.getElementById(sourceElemId);
             if (sourceElem !== null) {
                 if (LZ.supportedAutoTags.includes(sourceElem.tagName.toLowerCase())) {
+                    if (sourceElemId in LZ.lzsourceElements) {
+                        LZ.lzsourceElements[sourceElemId].push(elem);
+                    } else {
+                        LZ.lzsourceElements[sourceElemId] = [elem];
+                    }
                     sourceElem.oninput = function() {
-                        if ((mode = elem.getAttribute("lz-mode")) === "content") {
-                            elem.innerHTML = sourceElem.value;
-                        } else {
-                            elem.textContent = sourceElem.value;
+                        for (el of LZ.lzsourceElements[sourceElemId]) {
+                            if ((mode = el.getAttribute("lz-mode")) === "content") {
+                                el.innerHTML = sourceElem.value;
+                            } else {
+                                el.textContent = sourceElem.value;
+                            }
                         }
                         LZ._setValue("__LZ_auto_" + sourceElemId, sourceElem.value, false, sourceElem);
                     };
@@ -91,8 +99,14 @@ const LZ = {
             const sourceElem = document.getElementById(sourceElemId);
             if (sourceElem !== null) {
                 if (LZ.supportedAutoTags.includes(sourceElem.tagName.toLowerCase())) {
-                    sourceElem.oninput = null;
-                    LZ.removeValue("__LZ_auto_" + sourceElemId);
+                    if (sourceElemId in LZ.lzsourceElements) {
+                        LZ.lzsourceElements[sourceElemId].splice(LZ.lzsourceElements[sourceElemId].indexOf(elem), 1);
+                        if (LZ.lzsourceElements[sourceElemId].length === 0) {
+                            delete LZ.lzsourceElements[sourceElemId];
+                            sourceElem.oninput = null;
+                            LZ.removeValue("__LZ_auto_" + sourceElemId);
+                        }
+                    }
                 }
             }
         }
