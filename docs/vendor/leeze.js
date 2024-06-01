@@ -1,7 +1,6 @@
 const LZ = {
     reactiveElements: [],
     buckets: {},
-    supportedAutoTags: ["input", "textarea"],
     lzsourceElements: {},
 
     /**
@@ -50,7 +49,6 @@ const LZ = {
      * INTERNAL USE ONLY!  
      * Add the specified element to the reactive elements collection.  
      * If the element has the `lz-source` attribute, the element with that id will be used as the source of the content value.  
-     * The element MUST be an `input` element.
      * @param {Element} elem The reactive element to add to the collection.
      */
     addReactiveElement(elem) {
@@ -62,24 +60,25 @@ const LZ = {
         if (sourceElemId !== null && sourceElemId.length > 0) {
             const sourceElem = document.getElementById(sourceElemId);
             if (sourceElem !== null) {
-                if (LZ.supportedAutoTags.includes(sourceElem.tagName.toLowerCase())) {
-                    if (sourceElemId in LZ.lzsourceElements) {
-                        LZ.lzsourceElements[sourceElemId].push(elem);
-                    } else {
-                        LZ.lzsourceElements[sourceElemId] = [elem];
-                    }
-                    sourceElem.oninput = function() {
-                        for (el of LZ.lzsourceElements[sourceElemId]) {
-                            if ((mode = el.getAttribute("lz-mode")) === "content") {
-                                el.innerHTML = sourceElem.value;
-                            } else {
-                                el.textContent = sourceElem.value;
-                            }
-                        }
-                        LZ._setValue("__LZ_auto_" + sourceElemId, sourceElem.value, false, sourceElem);
-                    };
-                    sourceElem.oninput();
+                if (sourceElemId in LZ.lzsourceElements) {
+                    LZ.lzsourceElements[sourceElemId].push(elem);
+                } else {
+                    LZ.lzsourceElements[sourceElemId] = [elem];
                 }
+                const event = sourceElem.getAttribute("lz-source-event") ?? "oninput";
+                const value = sourceElem.getAttribute("lz-source-value") ?? "value";
+                sourceElem[event] = function() {
+                    for (el of LZ.lzsourceElements[sourceElemId]) {
+                        if (el.getAttribute("lz-onchange-only") !== null) continue;
+                        if ((mode = el.getAttribute("lz-mode")) === "content") {
+                            el.innerHTML = sourceElem[value];
+                        } else {
+                            el.textContent = sourceElem[value];
+                        }
+                    }
+                    LZ._setValue("__LZ_auto_" + sourceElemId, sourceElem.value, false, sourceElem);
+                };
+                sourceElem[event]();
             }
         }
     },
@@ -87,7 +86,7 @@ const LZ = {
     /**
      * INTERNAL USE ONLY!  
      * Remove the specified element from the reactive elements collection.  
-     * If the element has the `lz-source` attribute, and if that element is an `input` element, its `oninput` event will be set to `null`.
+     * If the element has the `lz-source` attribute, the source element event will be set to `null`.
      * @param {Element} elem The reactive element to remove from the collection.
      */
     removeReactiveElement(elem) {
@@ -103,7 +102,8 @@ const LZ = {
                         LZ.lzsourceElements[sourceElemId].splice(LZ.lzsourceElements[sourceElemId].indexOf(elem), 1);
                         if (LZ.lzsourceElements[sourceElemId].length === 0) {
                             delete LZ.lzsourceElements[sourceElemId];
-                            sourceElem.oninput = null;
+                            const event = sourceElem.getAttribute("lz-source-event") ?? "oninput";
+                            sourceElem[event] = null;
                             LZ.removeValue("__LZ_auto_" + sourceElemId);
                         }
                     }
@@ -137,7 +137,7 @@ const LZ = {
      * @param {string} bucketName The name of the bucket to be set/updated.
      * @param {*} val The desired value.
      * @param {boolean} forceChange (Optional) Whether or not `lz-onchange` should be forcefully executed. Defaults to `false`.
-     * @param {Element} sourceOfChange (Optional) The element that caused the change or `null` if the change was caused by something else.
+     * @param {Element|null} sourceOfChange (Optional) The element that caused the change or `null` if the change was caused by something else.
      */
     _setValue(bucketName, val, forceChange = false, sourceOfChange = null) {
         let existed = LZ.getValue(bucketName) != null;
