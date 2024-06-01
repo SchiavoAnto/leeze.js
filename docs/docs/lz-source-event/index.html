@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Leeze.js Documentation - lz-source</title>
+    <title>Leeze.js Documentation - lz-source-event</title>
     <link rel="stylesheet" href="../../common.css">
     <link rel="stylesheet" href="../docs.css">
     <link rel="shortcut icon" href="../../../assets/icons/leezejs_logo_small_1.ico" type="image/x-icon">
@@ -30,16 +30,11 @@
     <main>
         <aside id="sidebar"></aside>
         <div class="container">
-            <h2>lz-source</h2>
-            <p>The attribute <code>lz-source</code> is used to specify the HTML id of the element to use as the source of the value of the reactive element.</p>
-            <code>&lt;p lz-reactive lz-source="my-input"&gt;&lt;/p&gt;<br>
-            &lt;input type="text" id="my-input"&gt;</code>
-            <p>In this example, Leeze.js will automatically use the <code>input</code> element's value to change the paragraph content. It does so by adding an event listener to the <code>oninput</code> event and removing it if the reactive element gets deleted from the DOM.</p>
-            <p>By default, Leeze.js will hook up to the <code>oninput</code> event and will use the value contained in the <code>value</code> property of the source element.<br>
-            This is fine for most <code>input</code> types, but for other types (such as <code>type="checkbox"</code>) and other tags, you can specify the event and value property using
-            the <a href="../lz-source-event">lz-source-event</a> and <a href="../lz-source-value">lz-source-value</a> attributes respectively.</p>
+            <h2>lz-source-event</h2>
+            <p>The attribute <code>lz-source-event</code> is used to specify to which event of the source element (specfied with the <a href="../lz-source">lz-source</a> attribute) Leeze.js must hook to.<br>
+            If you don't use this attribute, the <code>oninput</code> event will be used by default.</p>
             <section class="tip-section">
-                <p>You can technically use both <code>lz-bucket</code> and <code>lz-source</code> on a reactive element but there is no guarantee that they both will work.</p>
+                <p>As opposed to <code>lz-source</code>, <code>lz-source-event</code> must be specified on the source element and NOT on the reactive element.</p>
             </section>
         </div>
     </main>
