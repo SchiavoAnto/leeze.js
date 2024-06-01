@@ -31,21 +31,21 @@ main {
     margin-top: 0;
 }
 
-.tip-section {
-    background-color: #cccccccc;
+.info-section {
+    background-color: #cccccc77;
     padding: 0.25rem;
-    padding-left: 2rem;
+    padding-left: 2.5rem;
     border: 0.25rem solid seagreen;
     border-radius: 1rem;
     position: relative;
 }
 
-.tip-section::before {
+.info-section::before {
     content: "";
     position: absolute;
     top: 50%;
     transform: translateY(-50%);
-    left: 0.7rem;
+    left: 0.9rem;
     width: 1rem;
     aspect-ratio: 1;
     background-image: url("../resources/icons/info-badge.svg");
@@ -55,6 +55,6 @@ main {
     display: inline-block;
 }
 
-.tip-section + .tip-section {
+.info-section + .info-section {
     margin-top: 0.5rem;
 }
