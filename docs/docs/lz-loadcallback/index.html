@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Leeze.js Documentation - LZLoadCallback</title>
+    <link rel="stylesheet" href="../../common.css">
+    <link rel="stylesheet" href="../docs.css">
+    <link rel="shortcut icon" href="../../../assets/icons/leezejs_logo_small_1.ico" type="image/x-icon">
+    <script>
+        window.onload = async () => {
+            document.getElementById("footer").innerHTML = await (await fetch('../../embeds/footer.html')).text();
+            document.getElementById("sidebar").innerHTML = await (await fetch('../embeds/sidebar.html')).text();
+        };
+    </script>
+</head>
+<body>
+    <nav>
+        <div class="logo-container">
+            <a href="../../" class="logo-link">
+                <img src="../../../assets/logos/leezejs_logo_medium.svg" alt="Leeze.js logo" class="logo-image">
+            </a>
+            <p>Documentation</p>
+        </div>
+        <div class="navigation-links-group">
+            <a href="../" active-link>Documentation</a>
+            <a href="https://github.com/schiavoanto/leeze.js" target="_blank" external-link>GitHub</a>
+        </div>
+    </nav>
+    <main>
+        <aside id="sidebar"></aside>
+        <div class="container">
+            <h2>LZLoadCallback</h2>
+            <p>Leeze.js runs its initialization code on the <code>window.onload</code> event. Hooking to <code>onload</code> causes developers to lose access to that event, which can be useful.<br>
+            <code>LZLoadCallback</code> gives you that functionality back, allowing you to run code in the <code>onload</code> event after Leeze.js initializes.</p>
+            <pre>
+function LZLoadCallback() {
+    console.log("Hello world, after Leeze.js initialization.");
+}</pre>
+            <p>That's all the code you need to use this feature. Just define a function called <code>LZLoadCallback</code> <b>before</b> including Leeze.js and it will get called automatically.</p>
+        </div>
+    </main>
+    <footer id="footer"></footer>
+</body>
+</html>
