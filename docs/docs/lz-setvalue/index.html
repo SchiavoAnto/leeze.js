@@ -45,8 +45,7 @@
 &lt;p lz-reactive lz-bucket="myBucket"&gt;&lt;/p&gt;
 &lt;script&gt;
     LZ.setValue("myBucket", "Hello, World!");
-&lt;/script&gt;
-            </pre>
+&lt;/script&gt;</pre>
             <p>This code correctly updates the paragraph content. Note that if the paragraph had the <code>lz-onchange</code> attribute, the callback function wouldn't have been called because it is the first time we're changing the "myBucket" bucket.<br>
             You can force the callback execution by passing <code>true</code> to the <code>forceChange</code> parameter.</p>
         </div>

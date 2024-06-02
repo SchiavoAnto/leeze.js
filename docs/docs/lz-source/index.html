@@ -32,8 +32,9 @@
         <div class="container">
             <h2>lz-source</h2>
             <p>The attribute <code>lz-source</code> is used to specify the HTML id of the element to use as the source of the value of the reactive element.</p>
-            <code>&lt;p lz-reactive lz-source="my-input"&gt;&lt;/p&gt;<br>
-            &lt;input type="text" id="my-input"&gt;</code>
+            <pre>
+&lt;p lz-reactive lz-source="my-input"&gt;&lt;/p&gt;
+&lt;input type="text" id="my-input"&gt;</pre>
             <p>In this example, Leeze.js will automatically use the <code>input</code> element's value to change the paragraph content. It does so by adding an event listener to the <code>oninput</code> event and removing it if the reactive element gets deleted from the DOM.</p>
             <p>By default, Leeze.js will hook up to the <code>oninput</code> event and will use the value contained in the <code>value</code> property of the source element.<br>
             This is fine for most <code>input</code> types, but for other types (such as <code>type="checkbox"</code>) and other tags, you can specify the event and value property using
