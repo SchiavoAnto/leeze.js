@@ -23,6 +23,19 @@ main {
     grid-template-columns: auto 1fr;
 }
 
+code {
+    background-color: #c7c7c7;
+    border-radius: 0.25rem;
+    padding: 0.15rem 0.25rem;
+}
+
+pre {
+    width: min-content;
+    background-color: #32855644;
+    border-radius: 0.3rem;
+    padding: 0.5rem;
+}
+
 .container {
     padding: 1rem;
 }
@@ -57,4 +70,8 @@ main {
 
 .info-section + .info-section {
     margin-top: 0.5rem;
+}
+
+.info-section code {
+    background-color: hsl(0, 0%, 74%);
 }
