@@ -61,4 +61,26 @@ window.onload = () => {
             refreshPreview();
         }
     });
+    codeArea.addEventListener("keydown", (event) => {
+        let start = codeArea.selectionStart;
+        let end = codeArea.selectionEnd;
+        switch (event.code) {
+            case "Tab":
+                event.preventDefault();
+                codeArea.value = codeArea.value.substring(0, start) + "    " + codeArea.value.substring(end);
+                codeArea.selectionStart = codeArea.selectionEnd = end + 4;
+                break;
+            case "Enter":
+                event.preventDefault();
+                const lastLineStartIndex = codeArea.value.lastIndexOf("\n") + 1;
+                const lastLine = codeArea.value.substring(lastLineStartIndex);
+                let lastLineStartingSpaces = 0;
+                for (char of lastLine) {
+                    if (char !== " ") break;
+                    lastLineStartingSpaces++;
+                }
+                codeArea.value = codeArea.value.substring(0, start) + "\n" + " ".repeat(lastLineStartingSpaces) + codeArea.value.substring(end);
+                break;
+        }
+    });
 };
