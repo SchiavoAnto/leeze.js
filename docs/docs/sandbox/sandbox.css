@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Kanit:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+@import url("../../fonts.css");
 
 :root {
     --background: #eee;
@@ -69,7 +69,7 @@ a[external-link]::after {
 }
 
 button {
-    background-color: hsl(146, 50%, 50%);
+    background-color: #00000022;
     border: 0.1rem solid seagreen;
     padding: 0.25rem 0.5rem;
     font-family: inherit;
@@ -78,7 +78,7 @@ button {
 }
 
 button:hover {
-    background-color: hsl(146, 50%, 40%);
+    background-color: hsl(146, 50%, 50%);
 }
 
 label {
@@ -111,6 +111,11 @@ label {
 .navigation-links-group {
     display: flex;
     gap: 0.75rem;
+}
+
+.vertical-separator {
+    border-left: 2px solid #ccc;
+    border-radius: 1px;
 }
 
 /* Actual sandbox css */
@@ -157,4 +162,12 @@ label {
 
 #code-area:focus {
     border: 0.15rem solid seagreen;
+}
+
+#preview-button {
+    background-color: hsl(146, 50%, 50%);
+}
+
+#preview-button:hover {
+    background-color: hsl(146, 50%, 40%);
 }
