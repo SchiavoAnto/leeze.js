@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Leeze.js Documentation - lz-mode</title>
+    <title>Leeze.js Documentation - lz-target</title>
     <link rel="stylesheet" href="../../common.css">
     <link rel="stylesheet" href="../docs.css">
     <link rel="shortcut icon" href="../../../assets/icons/leezejs_logo_small_1.ico" type="image/x-icon">
@@ -30,17 +30,11 @@
     <main>
         <aside id="sidebar"></aside>
         <div class="container">
-            <h2>lz-mode</h2>
-            <p>The attribute <code>lz-mode</code> is used to tell Leeze.js the mode of operation for that reactive element.<br>
-            Supported values for this attribute are:</p>
-            <ul>
-                <li><code>"text"</code> (default)</li>
-                <li><code>"content"</code></li>
-            </ul>
-            <p>If this attribute is not specified, Leeze.js will fall back to the default <code>"text"</code>.</p>
-            <p>When updating the reactive element's content, Leeze.js checks this attribute to decide how to update the contents:
-            when <code>"content"</code> is specified, Leeze.js will change the <code>innerHTML</code> property, allowing HTML to be set as content;
-            when not used or <code>"text"</code> is specified, the library will change the <code>textContent</code> property of the reactive element.</p>
+            <h2>lz-target</h2>
+            <p>The attribute <code>lz-target</code> is used to specify which property of the reactive element to update.<br>
+            By default, the value of <code>"textContent"</code> is used.
+            <p>If this attribute is not specified, Leeze.js will fall back to the default <code>"textContent"</code>.</p>
+            <p>When updating the reactive element's content, Leeze.js checks this attribute to decide which property to change. Note that no checks are made for either the property name or the value.</p>
         </div>
     </main>
     <footer id="footer"></footer>

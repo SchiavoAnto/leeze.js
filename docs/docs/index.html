@@ -39,7 +39,7 @@
                 <li><a href="./lz-source">lz-source</a></li>
                 <li><a href="./lz-source-event">lz-source-event</a></li>
                 <li><a href="./lz-source-value">lz-source-value</a></li>
-                <li><a href="./lz-mode">lz-mode</a></li>
+                <li><a href="./lz-target">lz-target</a></li>
                 <li><a href="./lz-onchange">lz-onchange</a></li>
                 <p>JavaScript</p>
                 <li><a href="./lz">The LZ object</a></li>
@@ -65,7 +65,7 @@
                 <li><code>lz-reactive</code></li>
                 <li><code>lz-bucket</code></li>
                 <li><code>lz-source</code></li>
-                <li><code>lz-mode</code></li>
+                <li><code>lz-target</code></li>
                 <li><code>lz-onchange</code></li>
             </ul>
             <p><code>lz-reactive</code> is fundamental to Leeze.js. It indicates that an element supports reactivity and its value will be updated either by changing a variable or automatically, by specifying a source element.</p>
@@ -74,8 +74,7 @@
                 <code>lz-source</code> is a little more nuanced: you have to specify an element id to make it work, but the element must be an <code>input</code> element.
                 Specifically, the element must support the <code>oninput</code> event and it must hold its value in the <code>value</code> property. An <code>&lt;input type="text"&gt;</code> is perfect for this.
             </p>
-            <p><code>lz-mode</code> tells Leeze.js how to replace the content. A value of <code>"text"</code> (which is the default) indicates that only the text contents will be replaced (essentially changing the element's <code>textContent</code> property);
-                a value of <code>"content"</code> will make Leeze.js replace the HTML inside the content. This DOES NOT sanitize or check the HTML, it just changes the element's <code>innerHTML</code> property.</p>
+            <p><code>lz-target</code> is used to specify which property of the reactive element Leeze.js has to change when the linked bucket or source element value changes.</p>
             <p><code>lz-onchange</code> is an attribute used to tell Leeze.js what function to call when the element's content has changed, acting essentially as a callback.
             The name of the function can be a fully qualified name (e.g. <code>my.namespaced.function</code>). The new value will be passed to this function when called.</p>
             <h3>Dynamic page content</h3>
