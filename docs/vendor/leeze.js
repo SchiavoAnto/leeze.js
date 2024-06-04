@@ -70,11 +70,8 @@ const LZ = {
                 sourceElem[event] = function() {
                     for (el of LZ.lzsourceElements[sourceElemId]) {
                         if (el.getAttribute("lz-onchange-only") !== null) continue;
-                        if ((mode = el.getAttribute("lz-mode")) === "content") {
-                            el.innerHTML = sourceElem[value];
-                        } else {
-                            el.textContent = sourceElem[value];
-                        }
+                        const target = el.getAttribute("lz-target") ?? "textContent";
+                        el[target] = sourceElem[value];
                     }
                     LZ._setValue("__LZ_auto_" + sourceElemId, sourceElem.value, false, sourceElem);
                 };
@@ -143,13 +140,9 @@ const LZ = {
         let existed = LZ.getValue(bucketName) != null;
         LZ.buckets[bucketName] = val;
         for (elem of LZ.reactiveElements) {
-            const mode = elem.getAttribute("lz-mode");
+            const target = elem.getAttribute("lz-target") ?? "textContent";
             if (elem.getAttribute("lz-bucket") == bucketName) {
-                if (mode === "content") {
-                    elem.innerHTML = val;
-                } else {
-                    elem.textContent = val;
-                }
+                elem[target] = val;
             }
             if (existed === true || forceChange === true) {
                 if ((v = elem.getAttribute("lz-onchange")) != null) {
