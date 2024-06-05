@@ -72,7 +72,7 @@ window.onload = () => {
                 break;
             case "Enter":
                 event.preventDefault();
-                const lastLineStartIndex = codeArea.value.lastIndexOf("\n") + 1;
+                const lastLineStartIndex = codeArea.value.lastIndexOf("\n");
                 const lastLine = codeArea.value.substring(lastLineStartIndex);
                 let lastLineStartingSpaces = 0;
                 for (char of lastLine) {
@@ -80,6 +80,7 @@ window.onload = () => {
                     lastLineStartingSpaces++;
                 }
                 codeArea.value = codeArea.value.substring(0, start) + "\n" + " ".repeat(lastLineStartingSpaces) + codeArea.value.substring(end);
+                codeArea.selectionStart = codeArea.selectionEnd = start + lastLineStartingSpaces + 1;
                 break;
         }
     });
