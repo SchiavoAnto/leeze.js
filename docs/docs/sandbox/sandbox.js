@@ -1,5 +1,20 @@
 let timeout = setTimeout(refreshPreview, 500);
-let autoPreviewCb, codeArea;
+/**
+ * @type {Element}
+ */
+let autoPreviewCb;
+/**
+ * @type {Element}
+ */
+let codeArea;
+/**
+ * @type {Element}
+ */
+let toastsOverlay;
+/**
+ * @type {number}
+ */
+let toastsIndex = 0;
 
 function refreshPreview() {
     clearTimeout(timeout);
@@ -35,7 +50,7 @@ function saveSandboxURL() {
     const final = url.toString();
     
     navigator.clipboard.writeText(final).catch((_a, _b) => {
-        alert("An error occurred while trying to copy the URL to the clipboard.");
+        showToastNotification("Clipboard error", "An error occurred while trying to copy the URL to the clipboard.");
     });
 }
 
@@ -43,13 +58,35 @@ function loadSandboxURL(code) {
     try {
         codeArea.value = base64ToString(code);
     } catch (_) {
-        alert("An error occurred while trying to load this sandbox URL.");
+        showToastNotification("Code loading error", "An error occurred while trying to load this sandbox URL.");
     }
+}
+
+function showToastNotification(title, message) {
+    const toast = document.createElement("div");
+    toast.id = `toast-${toastsIndex}`;
+    toast.classList.add("toast-notification");
+    toast.innerHTML = `
+    <div class="toast-notification-content">
+        <p>${title}</p>
+        <p>${message}</p>
+    </div>
+    <button onclick="closeToastNotification(${toastsIndex})">Close</button>
+    `;
+    toastsOverlay.appendChild(toast);
+    //setTimeout(closeToastNotification, 5000, toastsIndex);
+    toastsIndex++;
+}
+
+function closeToastNotification(index) {
+    const toast = document.getElementById(`toast-${index}`);
+    toast.remove();
 }
 
 window.onload = () => {
     autoPreviewCb = document.getElementById("auto-preview-cb");
     codeArea = document.getElementById("code-area");
+    toastsOverlay = document.getElementById("toasts-overlay");
 
     const params = new URL(document.location.href).searchParams;
     if (params.has("code")) {
