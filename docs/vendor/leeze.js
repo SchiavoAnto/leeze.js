@@ -2,6 +2,7 @@ const LZ = {
     reactiveElements: [],
     buckets: {},
     lzsourceElements: {},
+    lzgetElements: {},
 
     /**
      * INTERNAL USE ONLY!  
@@ -77,6 +78,11 @@ const LZ = {
                 };
                 sourceElem[event]();
             }
+        }
+        const elemId = elem.getAttribute("id");
+        const elemGetElement = elem.getAttribute("lz-get-element");
+        if (elemId !== null && elemGetElement !== null) {
+            this.lzgetElements[elemId] = elem;
         }
     },
 
