@@ -1,5 +1,5 @@
 <p align="center">
-  <img width="300" alt="Leeze.js logo" src="assets/logos/leezejs_logo_medium.svg">
+  <img width="300" alt="Leeze.js logo" src="docs/resources/logos/leezejs_logo_medium.svg">
 </p>
 
 # Simple Reactivity Library for the Simple Web
